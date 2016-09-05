@@ -1,0 +1,78 @@
+{
+  "name": "opticache",
+  "description": "Automated optimized routing cache Express middleware",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run nyc",
+    "pretest": "npm run lint",
+    "ava": "ava | tap-diff",
+    "ava:watch": "ava --watch | tap-diff",
+    "nyc": "nyc --all npm run ava",
+    "lint": "eslint index.js lib && eslint -c ./.eslintrc-ava.yml tests",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "reparo": "reparo -b master"
+  },
+  "keywords": [
+    "express",
+    "middleare",
+    "cache",
+    "punchcard-cms"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/punchcard-cms/opticache.git"
+  },
+  "author": "Sam Richard <snugug@us.ibm.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/punchcard-cms/opticache/issues"
+  },
+  "homepage": "https://github.com/punchcard-cms/opticache#readme",
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "coveralls": "^2.11.12",
+    "eslint": "^3.4.0",
+    "eslint-config-punchcard": "^1.0.1",
+    "ghooks": "^1.3.2",
+    "nyc": "^6.6.1",
+    "punchcard-commit-msg": "^1.0.0",
+    "punchcard-semantic-release": "^2.0.1",
+    "reparo": "^1.1.1-0",
+    "semantic-release": "^4.3.5",
+    "tap-diff": "^0.1.1"
+  },
+  "nyc": {
+    "exclude": [
+      "tests/**/*",
+      "config/**/*",
+      "public/**/*",
+      "bower_components/**/*",
+      "Gulpfile.js",
+      "coverage"
+    ]
+  },
+  "ava": {
+    "files": [
+      "tests/*.js",
+      "!tests/apis.js"
+    ],
+    "failFast": true,
+    "tap": true
+  },
+  "config": {
+    "ghooks": {
+      "commit-msg": "punchcard-commit-msg"
+    }
+  },
+  "release": {
+    "analyzeCommits": "punchcard-semantic-release/analyze",
+    "generateNotes": "punchcard-semantic-release/notes"
+  },
+  "dependencies": {
+    "critical": "^0.8.0",
+    "del": "^2.2.2",
+    "fs-extra": "^0.30.0",
+    "html-minifier": "^3.0.2"
+  }
+}
