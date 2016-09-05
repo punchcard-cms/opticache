@@ -20,7 +20,7 @@ const atm = options => {
         const query = req.query;
         const status = res.statusCode.toString();
 
-        if (query.hasOwnProperty('clean')) {
+        if (query.hasOwnProperty('clean') && process.env.NODE_ENV !== 'production') {
           fs.removeSync(url);
         }
 
