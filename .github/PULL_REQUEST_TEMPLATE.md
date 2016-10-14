@@ -1,4 +1,4 @@
-{{short description}}
+SHORT_DESCRIPTION
 
 ---
 Resolves #
