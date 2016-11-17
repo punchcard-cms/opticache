@@ -73,6 +73,6 @@
     "critical": "^0.8.0",
     "del": "^2.2.2",
     "fs-extra": "^0.30.0",
-    "html-minifier": "^3.0.2"
+    "html-minifier": "^3.2.1"
   }
 }
